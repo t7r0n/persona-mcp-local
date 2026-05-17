@@ -1,0 +1,31 @@
+{
+  "inquiries": [
+    {
+      "inquiry_id": "inq_verified_001",
+      "human_subject": "human_001",
+      "status": "verified",
+      "liveness_score": 0.992,
+      "deepfake_score": 0.018,
+      "assurance_level": "aal2",
+      "failure_reason": null
+    },
+    {
+      "inquiry_id": "inq_deepfake_001",
+      "human_subject": "human_synthetic_attack",
+      "status": "failed",
+      "liveness_score": 0.41,
+      "deepfake_score": 0.94,
+      "assurance_level": "none",
+      "failure_reason": "verification failed: liveness anomaly"
+    },
+    {
+      "inquiry_id": "inq_pending_001",
+      "human_subject": "human_pending",
+      "status": "pending",
+      "liveness_score": 0.0,
+      "deepfake_score": 0.0,
+      "assurance_level": "none",
+      "failure_reason": "inquiry pending"
+    }
+  ]
+}
