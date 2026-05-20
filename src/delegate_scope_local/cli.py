@@ -6,9 +6,9 @@ import sys
 import typer
 from rich.console import Console
 
-from persona_mcp_local.dashboard import benchmark_summary, build_dashboard
-from persona_mcp_local.issuer import register_agent
-from persona_mcp_local.runner import export_demo_pack, init_demo, run_suite, verify_outputs
+from delegate_scope_local.dashboard import benchmark_summary, build_dashboard
+from delegate_scope_local.issuer import register_agent
+from delegate_scope_local.runner import export_demo_pack, init_demo, run_suite, verify_outputs
 
 app = typer.Typer(help="Local MCP-style agent identity delegation.")
 console = Console()

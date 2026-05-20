@@ -9,8 +9,8 @@ from typing import Any
 
 import duckdb
 
-from persona_mcp_local.issuer import present, register_agent, reset_state, revoke, verify_presentation
-from persona_mcp_local.models import Event, EventKind, RunSummary, project_root
+from delegate_scope_local.issuer import present, register_agent, reset_state, revoke, verify_presentation
+from delegate_scope_local.models import Event, EventKind, RunSummary, project_root
 
 
 def init_demo(force: bool = False) -> dict[str, str]:
@@ -206,7 +206,7 @@ def verify_outputs() -> dict[str, Any]:
     stream_path = root / "outputs" / "event_stream.jsonl"
     db_path = root / "runs" / "latest" / "identity.duckdb"
     if not summary_path.exists() or not stream_path.exists() or not db_path.exists():
-        raise FileNotFoundError("Run `uv run persona-mcp-local run-suite` before verification.")
+        raise FileNotFoundError("Run `uv run delegate-scope-local run-suite` before verification.")
     summary = RunSummary.model_validate_json(summary_path.read_text(encoding="utf-8"))
     conn = duckdb.connect(str(db_path), read_only=True)
     event_count = conn.execute("select count(*) from events").fetchone()[0]

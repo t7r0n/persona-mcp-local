@@ -7,9 +7,9 @@ from pathlib import Path
 
 import pytest
 
-from persona_mcp_local.dashboard import build_dashboard
-from persona_mcp_local.issuer import present, register_agent, reset_state, revoke, verify_presentation
-from persona_mcp_local.runner import init_demo, run_suite, verify_outputs
+from delegate_scope_local.dashboard import build_dashboard
+from delegate_scope_local.issuer import present, register_agent, reset_state, revoke, verify_presentation
+from delegate_scope_local.runner import init_demo, run_suite, verify_outputs
 
 
 def test_register_present_verify_revoke_flow() -> None:
@@ -50,7 +50,7 @@ def test_end_to_end_suite_verify_dashboard() -> None:
 
 def test_stdio_register_rejection_contract() -> None:
     process = subprocess.run(
-        [sys.executable, "-m", "persona_mcp_local.cli", "stdio"],
+        [sys.executable, "-m", "delegate_scope_local.cli", "stdio"],
         input='{"tool":"agent.register","inquiry_id":"inq_deepfake_001","scopes":["payments:read"],"ttl_minutes":30}\n',
         text=True,
         capture_output=True,

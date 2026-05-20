@@ -6,7 +6,7 @@ import hmac
 import json
 from typing import Any
 
-DEV_KEY = b"persona-mcp-local-dev-signing-key"
+DEV_KEY = b"delegate-scope-local-dev-signing-key"
 
 
 def canonical(payload: dict[str, Any]) -> bytes:
@@ -22,9 +22,9 @@ def verify_signature(payload: dict[str, Any], signature: str) -> bool:
     return hmac.compare_digest(sign(payload), signature)
 
 
-def did_persona(inquiry_id: str) -> str:
+def did_subject(inquiry_id: str) -> str:
     digest = hashlib.sha256(inquiry_id.encode("utf-8")).hexdigest()[:24]
-    return f"did:persona:{digest}"
+    return f"did:subject:{digest}"
 
 
 def agent_did(name: str, inquiry_id: str) -> str:

@@ -5,7 +5,7 @@ from pathlib import Path
 
 from pydantic import BaseModel
 
-from persona_mcp_local.models import Inquiry, project_root
+from delegate_scope_local.models import Inquiry, project_root
 
 
 class InquiryFile(BaseModel):

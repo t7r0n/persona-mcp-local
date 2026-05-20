@@ -5,8 +5,8 @@ from pathlib import Path
 import duckdb
 from jinja2 import Environment, select_autoescape
 
-from persona_mcp_local.models import RunSummary, project_root
-from persona_mcp_local.runner import verify_outputs
+from delegate_scope_local.models import RunSummary, project_root
+from delegate_scope_local.runner import verify_outputs
 
 TEMPLATE = """
 <!doctype html>
@@ -95,7 +95,7 @@ def build_dashboard() -> Path:
     root = project_root()
     summary_path = root / "outputs" / "summary.json"
     if not summary_path.exists():
-        raise FileNotFoundError("Run `uv run persona-mcp-local run-suite` first.")
+        raise FileNotFoundError("Run `uv run delegate-scope-local run-suite` first.")
     summary = RunSummary.model_validate_json(summary_path.read_text(encoding="utf-8"))
     env = Environment(autoescape=select_autoescape(["html", "xml"]))
     html = env.from_string(TEMPLATE).render(summary=summary, verification=verify_outputs(), event_mix=event_mix())

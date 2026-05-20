@@ -3,9 +3,9 @@ from __future__ import annotations
 import time
 import uuid
 
-from persona_mcp_local.crypto import agent_did, did_persona, sign, verify_signature
-from persona_mcp_local.fixtures import load_inquiries
-from persona_mcp_local.models import AgentCredential, InquiryStatus, Presentation, VerificationResult
+from delegate_scope_local.crypto import agent_did, did_subject, sign, verify_signature
+from delegate_scope_local.fixtures import load_inquiries
+from delegate_scope_local.models import AgentCredential, InquiryStatus, Presentation, VerificationResult
 
 REGISTRY: dict[str, AgentCredential] = {}
 REVOKED: set[str] = set()
@@ -38,7 +38,7 @@ def register_agent(inquiry_id: str, scopes: list[str], ttl_minutes: int, agent_n
     now = int(time.time())
     credential = AgentCredential(
         credential_id=f"vc_{uuid.uuid4().hex[:12]}",
-        holder=did_persona(inquiry.inquiry_id),
+        holder=did_subject(inquiry.inquiry_id),
         subject=agent_did(agent_name, inquiry.inquiry_id),
         inquiry_id=inquiry.inquiry_id,
         scopes=scopes,

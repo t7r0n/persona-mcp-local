@@ -31,7 +31,7 @@ class Inquiry(BaseModel):
 
 class AgentCredential(BaseModel):
     credential_id: str
-    issuer: str = "did:web:local-persona.example"
+    issuer: str = "did:web:local-delegate.example"
     holder: str
     subject: str
     inquiry_id: str

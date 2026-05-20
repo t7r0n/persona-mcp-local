@@ -12,22 +12,22 @@ Local MCP-style agent identity delegation reference.
 
 - Builds a compact fixture set around local mcp-style agent identity delegation reference.
 - Separates signal, failure, and reporting code so `Local Agent Identity Delegation` can be audited without a live integration.
-- Writes `persona-mcp-local` structured outputs before rendering the dashboard, which keeps the UI honest.
-- Uses the `persona-mcp-local` lockfile and local commands as the reproducibility contract.
+- Writes `delegate-scope-local` structured outputs before rendering the dashboard, which keeps the UI honest.
+- Uses the `delegate-scope-local` lockfile and local commands as the reproducibility contract.
 
 ## Local run
 
 ```bash
 uv sync
-uv run persona-mcp-local init-demo
-uv run persona-mcp-local run-suite --iterations 100
-uv run persona-mcp-local verify
-uv run persona-mcp-local dashboard
+uv run delegate-scope-local init-demo
+uv run delegate-scope-local run-suite --iterations 100
+uv run delegate-scope-local verify
+uv run delegate-scope-local dashboard
 ```
 
 ```bash
-uv run persona-mcp-local register --inquiry inq_verified_001 --scope payments:read --ttl-minutes 30
-uv run persona-mcp-local run-suite
+uv run delegate-scope-local register --inquiry inq_verified_001 --scope payments:read --ttl-minutes 30
+uv run delegate-scope-local run-suite
 ```
 
 ## Produced files
@@ -43,9 +43,9 @@ uv run persona-mcp-local run-suite
 ```bash
 uv run ruff check .
 uv run pytest -q
-uv run persona-mcp-local verify
+uv run delegate-scope-local verify
 ```
 
 ## Operational boundary
 
-The `persona-mcp-local` public surface is source, tests, lockfile, and docs. It does not need credentials, browser state, customer records, or hosted services.
+The `delegate-scope-local` public surface is source, tests, lockfile, and docs. It does not need credentials, browser state, customer records, or hosted services.
